@@ -1,0 +1,14 @@
+node_modules
+.idea/
+.env*
+build/
+package-lock.json
+.DS_Store
+/todo
+.vscode/
+public/meta.json
+cypress
+cypress.config.ts
+
+
+.sentryclirc
