@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react'
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 
-import { useAppSelector, appStore } from 'store/store'
+// import { useAppSelector, appStore } from 'store/store'
 
 import { AuthLayout } from 'layouts/AuthLayout/AuthLayout'
 import { MainLayout } from 'layouts/MainLayout/MainLayout'
