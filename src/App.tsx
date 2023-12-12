@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { Provider as ReduxProvider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
@@ -12,7 +12,9 @@ export const App = () => {
   return (
     <ReduxProvider store={appStore}>
       <PersistGate loading={null} persistor={persistedStore}>
-        <RouterProvider router={appRouter()} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <RouterProvider router={appRouter()} />
+        </Suspense>
       </PersistGate>
     </ReduxProvider>
   )

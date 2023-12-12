@@ -1,10 +1,14 @@
 import { type ReactElement } from 'react'
 import { Navigate, createBrowserRouter } from 'react-router-dom'
+import { lazyWithRetry } from './lazyWithRetry'
 
 // import { useAppSelector, appStore } from 'store/store'
 
-import { AuthLayout } from 'layouts/AuthLayout/AuthLayout'
-import { MainLayout } from 'layouts/MainLayout/MainLayout'
+const LoginPage = lazyWithRetry(() => import('pages/LoginPage'))
+
+const MainPage = lazyWithRetry(() => import('pages/MainPage'))
+
+const SettingsPage = lazyWithRetry(() => import('pages/SettingsPage'))
 
 type GuestGuardProps = {
   children: ReactElement
@@ -13,9 +17,9 @@ type GuestGuardProps = {
 function GuestGuard({ children }: GuestGuardProps) {
   // const isAuthorized = useAppSelector(selectIsAuthorized)
 
-  const isAuthorized = false
+  // const isAuthorized = false
 
-  if (!isAuthorized) return <Navigate to='/login' />
+  // if (!isAuthorized) return <Navigate to='/login' />
 
   return children
 }
@@ -28,9 +32,9 @@ function AuthGuard({ children }: AuthGuardProps) {
   // const isAuthorized = useAppSelector(selectIsAuthorized)
   // const isAuthorized = useAppSelector(selectIsAuthorized)
 
-  const isAuthorized = true
+  // const isAuthorized = true
 
-  if (isAuthorized) return <Navigate to='/' />
+  // if (isAuthorized) return <Navigate to='/' />
 
   return children
 }
@@ -38,41 +42,30 @@ function AuthGuard({ children }: AuthGuardProps) {
 export const appRouter = () =>
   createBrowserRouter([
     {
-      element: <AuthLayout />,
+      element: (
+        <GuestGuard>
+          <LoginPage />
+        </GuestGuard>
+      ),
       errorElement: <div>error</div>,
-
-      children: [
-        {
-          path: '/login',
-          element: (
-            <GuestGuard>
-              <div>login</div>
-            </GuestGuard>
-          ),
-        },
-      ],
+      path: '/login',
     },
     {
-      element: <MainLayout />,
+      path: '/',
+      element: (
+        <AuthGuard>
+          <MainPage />
+        </AuthGuard>
+      ),
       errorElement: <div>error</div>,
-
-      children: [
-        {
-          path: '/',
-          element: (
-            <AuthGuard>
-              <div>main</div>
-            </AuthGuard>
-          ),
-        },
-        {
-          path: '/settings',
-          element: (
-            <AuthGuard>
-              <div>settings</div>
-            </AuthGuard>
-          ),
-        },
-      ],
+    },
+    {
+      path: '/settings',
+      element: (
+        <AuthGuard>
+          <SettingsPage />
+        </AuthGuard>
+      ),
+      errorElement: <div>error</div>,
     },
   ])
