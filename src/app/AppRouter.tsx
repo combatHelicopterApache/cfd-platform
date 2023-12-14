@@ -1,8 +1,12 @@
 import { type ReactElement } from 'react'
 import { Navigate, createBrowserRouter } from 'react-router-dom'
-import { lazyWithRetry } from './lazyWithRetry'
+import { lazyWithRetry } from '../shared/routing/lazyWithRetry'
 
-// import { useAppSelector, appStore } from 'store/store'
+import { useAppSelector } from 'app/AppStore'
+
+import { selectIsAuthorized } from 'entities/session'
+
+// import { featureToggleLoader } from 'entities/featureToggle'
 
 const LoginPage = lazyWithRetry(() => import('pages/LoginPage'))
 
@@ -15,11 +19,9 @@ type GuestGuardProps = {
 }
 
 function GuestGuard({ children }: GuestGuardProps) {
-  // const isAuthorized = useAppSelector(selectIsAuthorized)
+  const isAuthorized = useAppSelector(selectIsAuthorized)
 
-  // const isAuthorized = false
-
-  // if (!isAuthorized) return <Navigate to='/login' />
+  if (!isAuthorized) return <Navigate to='/login' />
 
   return children
 }
@@ -29,12 +31,9 @@ type AuthGuardProps = {
 }
 
 function AuthGuard({ children }: AuthGuardProps) {
-  // const isAuthorized = useAppSelector(selectIsAuthorized)
-  // const isAuthorized = useAppSelector(selectIsAuthorized)
+  const isAuthorized = useAppSelector(selectIsAuthorized)
 
-  // const isAuthorized = true
-
-  // if (isAuthorized) return <Navigate to='/' />
+  if (isAuthorized) return <Navigate to='/' />
 
   return children
 }
@@ -43,29 +42,38 @@ export const appRouter = () =>
   createBrowserRouter([
     {
       element: (
-        <GuestGuard>
+        <AuthGuard>
           <LoginPage />
-        </GuestGuard>
+        </AuthGuard>
       ),
       errorElement: <div>error</div>,
       path: '/login',
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
     },
     {
       path: '/',
       element: (
-        <AuthGuard>
+        <GuestGuard>
           <MainPage />
-        </AuthGuard>
+        </GuestGuard>
       ),
       errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
     },
     {
       path: '/settings',
       element: (
-        <AuthGuard>
+        <GuestGuard>
           <SettingsPage />
-        </AuthGuard>
+        </GuestGuard>
       ),
       errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
     },
   ])

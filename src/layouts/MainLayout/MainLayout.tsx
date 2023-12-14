@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-export const MainLayout = ({ children }): React.ReactNode => {
-  return children
+interface MainLayoutProps {
+  children: ReactNode
+}
+
+export const MainLayout: React.FC<MainLayoutProps> = ({
+  children,
+}: MainLayoutProps) => {
+  return <>{children}</>
 }

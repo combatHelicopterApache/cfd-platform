@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-export const AuthLayout = ({ children }): React.ReactNode => {
-  return children
+interface AuthLayoutProps {
+  children: ReactNode
+}
+
+export const AuthLayout: React.FC<AuthLayoutProps> = ({
+  children,
+}: AuthLayoutProps) => {
+  return <>{children}</>
 }

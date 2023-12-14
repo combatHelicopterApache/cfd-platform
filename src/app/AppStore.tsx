@@ -12,12 +12,15 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { rootReducer } from './rootReducer'
-import { TypedUseSelectorHook, useSelector } from 'react-redux'
+import { TypedUseSelectorHook, useSelector, useDispatch } from 'react-redux'
+import { sessionSlice } from 'entities/session'
+import { baseApi } from 'shared/api'
+import { invalidateAccessTokenListener } from 'features/auth/invalidateAccessToken'
 
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: [sessionSlice.name],
+  whitelist: [sessionSlice.name],
 }
 
 export function makeStore() {
@@ -31,7 +34,7 @@ export function makeStore() {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }),
+      }).concat(baseApi.middleware, invalidateAccessTokenListener.middleware),
   })
 
   setupListeners(store.dispatch)
@@ -43,7 +46,8 @@ export const appStore = makeStore()
 export const persistedStore = persistStore(appStore)
 
 export type RootState = ReturnType<typeof appStore.getState>
+export type AppDispatch = typeof appStore.dispatch
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export type AppDispatch = typeof appStore.dispatch
+export const useAppDispatch = useDispatch<AppDispatch>
