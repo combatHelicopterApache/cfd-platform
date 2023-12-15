@@ -13,17 +13,17 @@ const navigation = [
     url: '/exchange',
   },
   {
-    title: 'Buy Crypto',
+    title: 'Buy',
     dropdown: [
       {
         title: 'Credit card',
         icon: 'user',
-        url: '/buy-crypto',
+        url: '/buy',
       },
       {
         title: 'Bank deposit',
         icon: 'image',
-        url: '/deposit-fiat',
+        url: '/deposit',
       },
     ],
   },

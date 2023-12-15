@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import styles from './Wallet.module.sass'
 import Icon from '../Icon/Icon'
-import Modal from '../Modal'
+import Modal from '../Modal/Modal'
 import Withdraw from '../Withdraw'
 import Transfer from '../Transfer'
 

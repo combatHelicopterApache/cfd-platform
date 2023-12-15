@@ -3,7 +3,7 @@ import cn from 'classnames'
 import styles from './Actions.module.sass'
 import { Link } from 'react-router-dom'
 import Icon from '../Icon/Icon'
-import Modal from '../Modal'
+import Modal from '../Modal/Modal'
 import Transfer from '../Transfer'
 
 const items = [

@@ -14,6 +14,14 @@ const HomePage = lazyWithRetry(() => import('pages/HomePage'))
 
 const SettingsPage = lazyWithRetry(() => import('pages/SettingsPage'))
 
+const ExchangePage = lazyWithRetry(() => import('pages/ExchangePage'))
+
+const BuyPage = lazyWithRetry(() => import('pages/Buy'))
+
+const DepositPage = lazyWithRetry(() => import('pages/DepositPage'))
+
+const MarketPage = lazyWithRetry(() => import('pages/MarketPage'))
+
 type GuestGuardProps = {
   children: ReactElement
 }
@@ -58,6 +66,54 @@ export const appRouter = () =>
       element: (
         <GuestGuard>
           <HomePage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/exchange',
+      element: (
+        <GuestGuard>
+          <ExchangePage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/buy',
+      element: (
+        <GuestGuard>
+          <BuyPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/deposit',
+      element: (
+        <GuestGuard>
+          <DepositPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/market',
+      element: (
+        <GuestGuard>
+          <MarketPage />
         </GuestGuard>
       ),
       errorElement: <div>error</div>,

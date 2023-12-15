@@ -1,13 +1,6 @@
 import React, { useRef } from 'react'
-import {
-  Main,
-  Learn,
-  Trend,
-  Steps,
-  Download,
-  Popular,
-  News,
-} from 'features/home'
+import { Main, Learn, Trend, Steps, Download, News } from 'features/home'
+import { Popular } from 'entities/Popular/Popular'
 
 export const Home = () => {
   const scrollToRef = useRef(null)
