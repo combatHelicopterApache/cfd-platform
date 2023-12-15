@@ -10,7 +10,7 @@ import { selectIsAuthorized } from 'entities/session'
 
 const LoginPage = lazyWithRetry(() => import('pages/LoginPage'))
 
-const MainPage = lazyWithRetry(() => import('pages/MainPage'))
+const HomePage = lazyWithRetry(() => import('pages/HomePage'))
 
 const SettingsPage = lazyWithRetry(() => import('pages/SettingsPage'))
 
@@ -19,9 +19,10 @@ type GuestGuardProps = {
 }
 
 function GuestGuard({ children }: GuestGuardProps) {
-  const isAuthorized = useAppSelector(selectIsAuthorized)
+  // const isAuthorized = useAppSelector(selectIsAuthorized)
+  const isAuthorized = true
 
-  if (!isAuthorized) return <Navigate to='/login' />
+  if (!isAuthorized) return <Navigate to='/sign-in' />
 
   return children
 }
@@ -47,7 +48,7 @@ export const appRouter = () =>
         </AuthGuard>
       ),
       errorElement: <div>error</div>,
-      path: '/login',
+      path: '/sign-in',
       // loader: async () => {
       //   return await featureToggleLoader(appStore.dispatch)
       // },
@@ -56,7 +57,7 @@ export const appRouter = () =>
       path: '/',
       element: (
         <GuestGuard>
-          <MainPage />
+          <HomePage />
         </GuestGuard>
       ),
       errorElement: <div>error</div>,

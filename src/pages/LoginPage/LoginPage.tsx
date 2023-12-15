@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react'
 
 import { useLocation, useNavigate } from 'react-router-dom'
-import { AuthLayout } from 'layouts/AuthLayout/AuthLayout'
-import { LoginForm } from 'features/auth/login/ui/LoginForm/LoginForm'
+
+import { SignIn } from 'widgets/SignIn'
+import { PageLayout } from 'layouts/PageLayout/PageLayout'
 
 export const LoginPage = () => {
   const navigate = useNavigate()
@@ -13,8 +14,8 @@ export const LoginPage = () => {
   }, [navigate])
 
   return (
-    <AuthLayout>
-      <LoginForm onComplete={onComplete} />
-    </AuthLayout>
+    <PageLayout headerHide footerHide>
+      <SignIn />
+    </PageLayout>
   )
 }

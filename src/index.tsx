@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import '../src/styles/index.scss'
+import './styles/app.sass'
 import { App } from './app/App'
 import reportWebVitals from './reportWebVitals'
 import { __serverStartDatabaseMigration } from 'shared/server'
