@@ -12,15 +12,43 @@ const LoginPage = lazyWithRetry(() => import('pages/LoginPage'))
 
 const HomePage = lazyWithRetry(() => import('pages/HomePage'))
 
-const SettingsPage = lazyWithRetry(() => import('pages/SettingsPage'))
-
 const ExchangePage = lazyWithRetry(() => import('pages/ExchangePage'))
 
 const BuyPage = lazyWithRetry(() => import('pages/Buy'))
 
+const SellPage = lazyWithRetry(() => import('pages/SellPage'))
+
 const DepositPage = lazyWithRetry(() => import('pages/DepositPage'))
 
 const MarketPage = lazyWithRetry(() => import('pages/MarketPage'))
+
+const LearnPage = lazyWithRetry(() => import('pages/Learn'))
+
+const ActivityPage = lazyWithRetry(() => import('pages/ActivityPage'))
+
+const WaalletOverviewPage = lazyWithRetry(
+  () => import('pages/WalletOverviewPage'),
+)
+
+const WaalletOverviewDetailsPage = lazyWithRetry(
+  () => import('pages/WalletOverviewDetailsPage'),
+)
+
+const WalletMarginPage = lazyWithRetry(() => import('pages/WalletMarginPage'))
+
+const FiatAndSpotPage = lazyWithRetry(() => import('pages/FiatAndSpotPage'))
+
+const ProfileInfoPage = lazyWithRetry(() => import('pages/ProfileInfoPage'))
+
+const ReferralsPage = lazyWithRetry(() => import('pages/Referrals'))
+
+const ApiKeysPage = lazyWithRetry(() => import('pages/ApiKeysPage'))
+
+const SessionAndLoginHistoryPage = lazyWithRetry(
+  () => import('pages/SessionAndLoginHistoryPage'),
+)
+
+const NotificationPage = lazyWithRetry(() => import('pages/NotificationsPage'))
 
 type GuestGuardProps = {
   children: ReactElement
@@ -98,6 +126,18 @@ export const appRouter = () =>
       // },
     },
     {
+      path: '/sell',
+      element: (
+        <GuestGuard>
+          <SellPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
       path: '/deposit',
       element: (
         <GuestGuard>
@@ -122,10 +162,132 @@ export const appRouter = () =>
       // },
     },
     {
-      path: '/settings',
+      path: '/learn',
       element: (
         <GuestGuard>
-          <SettingsPage />
+          <LearnPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/activity',
+      element: (
+        <GuestGuard>
+          <ActivityPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/wallet-overview',
+      element: (
+        <GuestGuard>
+          <WaalletOverviewPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/wallet-overview/:id',
+      element: (
+        <GuestGuard>
+          <WaalletOverviewDetailsPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/wallet-margin',
+      element: (
+        <GuestGuard>
+          <WalletMarginPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/fiat-and-spot',
+      element: (
+        <GuestGuard>
+          <FiatAndSpotPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/profile-info',
+      element: (
+        <GuestGuard>
+          <ProfileInfoPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+
+    {
+      path: '/referrals',
+      element: (
+        <GuestGuard>
+          <ReferralsPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+
+    {
+      path: '/api-keys',
+      element: (
+        <GuestGuard>
+          <ApiKeysPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/sessions-and-login-history',
+      element: (
+        <GuestGuard>
+          <SessionAndLoginHistoryPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/notifications',
+      element: (
+        <GuestGuard>
+          <NotificationPage />
         </GuestGuard>
       ),
       errorElement: <div>error</div>,

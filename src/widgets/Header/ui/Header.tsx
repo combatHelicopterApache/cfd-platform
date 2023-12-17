@@ -33,7 +33,7 @@ const navigation = [
   },
   {
     title: 'Discover',
-    url: '/learn-crypto',
+    url: '/learn',
   },
 ]
 

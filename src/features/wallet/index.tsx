@@ -1,0 +1,6 @@
+export { Integrations } from './ui/Integrations/Integrations'
+export { AssetBalances } from './ui/AssetBalances/AssetBalances'
+export { AccountBalances } from './ui/AccountBalances/AccountBalances'
+export { Faq } from './ui/Faq/Faq'
+export { Main } from './ui/Main/Main'
+export { MainFiatAndSpot } from './ui/MainFiatAndSpot/MainFiatAndSpot'
