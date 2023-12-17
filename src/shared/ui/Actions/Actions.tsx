@@ -16,7 +16,7 @@ const items = [
     image: '/images/content/actions-pic-1.png',
     image2x: '/images/content/actions-pic-1@2x.png',
     buttonText: 'Bank deposit',
-    url: '/deposit-fiat',
+    url: '/deposit',
   },
   {
     title: 'Transfer',

@@ -101,7 +101,7 @@ export const Wallet = ({ className, children }) => {
           <div className={styles.btns}>
             <Link
               className={cn('button button-small', styles.button)}
-              to='/deposit-fiat'
+              to='/deposit'
             >
               Deposit
             </Link>

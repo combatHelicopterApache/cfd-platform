@@ -73,7 +73,7 @@ export const Notifications = ({ className }) => {
           <div className={styles.btns}>
             <Link
               className={cn('button-small', styles.button)}
-              to='notifications'
+              to='/notifications'
               onClick={() => setVisible(false)}
             >
               View all

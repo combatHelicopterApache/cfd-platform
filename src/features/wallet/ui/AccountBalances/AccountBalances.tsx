@@ -60,7 +60,7 @@ export const AccountBalances = () => {
                 <div className={styles.btns}>
                   <Link
                     className={cn('button-stroke button-small', styles.button)}
-                    to='/deposit-fiat'
+                    to='/deposit'
                   >
                     <span>Deposit</span>
                     <Icon name='arrow-right' size='16' />

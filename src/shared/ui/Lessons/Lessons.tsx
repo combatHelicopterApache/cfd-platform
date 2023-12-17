@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import styles from './Lessons.module.sass'
 import { Card } from './Card/Card'
-import Loader from '../Loader'
+import { Loader } from '../Loader/Loader'
 
 const items = [
   {

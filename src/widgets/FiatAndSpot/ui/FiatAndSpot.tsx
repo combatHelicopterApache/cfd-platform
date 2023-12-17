@@ -27,7 +27,7 @@ export const FiatAndSpot = () => {
                 </Link>
                 <Link
                   className={cn('button-stroke button-small', styles.button)}
-                  to='/deposit-fiat'
+                  to='/deposit'
                 >
                   Deposit
                 </Link>

@@ -8,13 +8,14 @@ import { appRouter } from 'app/AppRouter'
 
 import { appStore, persistedStore } from 'app/AppStore'
 import ErrorBoundary from 'services/ErrorBoundary/ErrorBoundary'
+import { Loader } from 'shared/ui'
 
 export const App = () => {
   return (
     <ErrorBoundary>
       <ReduxProvider store={appStore}>
         <PersistGate loading={null} persistor={persistedStore}>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Loader />}>
             <RouterProvider router={appRouter()} />
           </Suspense>
         </PersistGate>

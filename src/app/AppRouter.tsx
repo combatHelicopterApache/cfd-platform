@@ -50,6 +50,12 @@ const SessionAndLoginHistoryPage = lazyWithRetry(
 
 const NotificationPage = lazyWithRetry(() => import('pages/NotificationsPage'))
 
+const TwoFaPage = lazyWithRetry(() => import('pages/TwoFa'))
+
+const ChangePasswordPage = lazyWithRetry(
+  () => import('pages/ChangePasswordPage'),
+)
+
 type GuestGuardProps = {
   children: ReactElement
 }
@@ -288,6 +294,30 @@ export const appRouter = () =>
       element: (
         <GuestGuard>
           <NotificationPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/2fa',
+      element: (
+        <GuestGuard>
+          <TwoFaPage />
+        </GuestGuard>
+      ),
+      errorElement: <div>error</div>,
+      // loader: async () => {
+      //   return await featureToggleLoader(appStore.dispatch)
+      // },
+    },
+    {
+      path: '/change-password',
+      element: (
+        <GuestGuard>
+          <ChangePasswordPage />
         </GuestGuard>
       ),
       errorElement: <div>error</div>,

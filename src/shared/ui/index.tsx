@@ -23,3 +23,4 @@ export { Profile } from './Profile/Profile'
 export { Switch } from './Switch/Switch'
 
 export { Breadcrumbs } from './Breadcrumbs/Breadcrumbs'
+export { Loader } from './Loader/Loader'
