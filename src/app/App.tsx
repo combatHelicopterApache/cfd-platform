@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import { appRouter } from 'app/AppRouter'
+import { Localization } from 'services/Localization/Localization'
 
 import { appStore, persistedStore } from 'app/AppStore'
 import ErrorBoundary from 'services/ErrorBoundary/ErrorBoundary'
@@ -16,7 +17,9 @@ export const App = () => {
       <ReduxProvider store={appStore}>
         <PersistGate loading={null} persistor={persistedStore}>
           <Suspense fallback={<Loader />}>
-            <RouterProvider router={appRouter()} />
+            <Localization>
+              <RouterProvider router={appRouter()} />
+            </Localization>
           </Suspense>
         </PersistGate>
       </ReduxProvider>
